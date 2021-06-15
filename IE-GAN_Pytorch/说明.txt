@@ -1,0 +1,6 @@
+复现实验1：
+IEGAN利用第一次采集的图像对LC1 1633对 以彩色图方式喂入；测试用LC2彩色图喂入，结果保存在./results_IEGAN/LC22_color
+IEGANnoD利用第一次采集的图像对LC1 1633对 以彩色图方式喂入；测试用LC2彩色图喂入，结果保存在./results_IEGANnoD/LC22_color
+
+IEGAN利用第一次采集的图像对LC1 1633对 以灰度图方式喂入；测试用LC2灰度喂入，结果保存在./results_IEGAN/LC22_gray
+IEGANnoD利用第一次采集的图像对LC1 1633对 以灰度图方式喂入；测试用LC2灰度喂入，结果保存在./results_IEGANnoD/LC22_gray
