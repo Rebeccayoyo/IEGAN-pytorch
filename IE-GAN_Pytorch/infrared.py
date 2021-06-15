@@ -5,7 +5,10 @@ LastEditTime: 2021-03-24 01:08:52
 LastEditors: Please set LastEditors
 Description: In User Settings Edit
 FilePath: /zlj/Infraredechance/torch/IE-GANbyzlj/infrared.py
+
+
 '''
+# modify
 import os
 from torch.utils.data import DataLoader,Dataset
 from skimage import io,transform
