@@ -361,7 +361,7 @@ def train_model_byimages():#以图像文件夹训练模型
             #################maxD#############################
             fake_image = G_net(batch_x)            
             fake_AB = torch.cat((batch_x,fake_image),1)#GAN_G
-            fake_predict = D_net(fake_AB) 
+            fake_predict = D_net(fake_AB.detach()) #[fake_AB 是G网络的输出]tensor detach()该变量以及该变量以前的变量都不需要计算梯度 
             loss_gan_fake = criterionGAN(fake_predict,y_fake)        
             
             real_AB = torch.cat((batch_x,batch_y),1)#GAN_D
@@ -374,7 +374,11 @@ def train_model_byimages():#以图像文件夹训练模型
             d_optimizer.step()
             #################minG#############################
             loss_L2loss = criterionL2(fake_image,batch_y)#mse
-            loss_g = loss_L2loss*100
+            fake_AB = torch.cat((batch_x,fake_image),1)#GAN_G
+            fake_predict = D_net(fake_AB)
+            loss_d = criterionGAN(fake_predict,y_real) # GAN_G 让D认为是真的
+            
+            loss_g = loss_L2loss*100 +loss_d
             g_optimizer.zero_grad()
             loss_g.backward(retain_graph=True)
             g_optimizer.step()
